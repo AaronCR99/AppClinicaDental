@@ -1,0 +1,101 @@
+﻿@model AppClinicaDental.Models.Cita
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Modificar</h1>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Cedula" />
+
+            <div class="form-group">
+                <label asp-for="Cedula" class="control-label"></label>
+                <input asp-for="Cedula" class="form-control" />
+                <span asp-validation-for="Cedula" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fecha" class="control-label"></label>
+                <input asp-for="Fecha" class="form-control" />
+                <span asp-validation-for="Fecha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MontoTotal" class="control-label"></label>
+                <input asp-for="MontoTotal" class="form-control" />
+                <span asp-validation-for="MontoTotal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MontoPorAdelantado" class="control-label"></label>
+                <input asp-for="MontoPorAdelantado" class="form-control" />
+                <span asp-validation-for="MontoPorAdelantado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Procedimiento" class="control-label" id="Procedi"></label>
+                <select name="procedimiento" asp-for="Procedimiento" class="control-label">
+                    <option selected value="0">Seleccione un tratamiento</option>
+                    <option value="1">Calza</option>
+                    <option value="2">Extraccion</option>
+                    <option value="3">Ortodoncia</option>
+                    <option value="4">Limpieza</option>
+                    <option value="5">Blanqueamiento</option>
+                </select>
+                @*<input asp-for="Procedimiento" class="form-control" />*@
+                <span asp-validation-for="Procedimiento" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="MontoIva" class="control-label"></label>
+                <input asp-for="MontoIva" class="form-control" />
+                <span asp-validation-for="MontoIva" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalConfirmar">
+                    Aplicar
+                </button>
+            </div>
+
+
+            <div id="modalConfirmar" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"
+                 aria-labelledby="titulo">
+
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        @*Aqui se construye el encabezado*@
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="titulo">Confirmar Accion</h5>
+                        </div>
+                        @*Aqui se construye el cuerpo*@
+                        <div class="modal-body">
+                            <p>Desea modificar el producto @Model.Nombre ?</p>
+                        </div>
+                        @*Aqui se muestran los controles de ventanas*@
+                        <div class="modal-footer">
+                            <input type="submit" value="Aplicar Cambios" class="btn btn-primary" />
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</div>
